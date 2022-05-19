@@ -7,6 +7,7 @@ corretar.
  de saque da conta. Implemente a conta  bancária.*/
 
 import entities.User;
+import execeptions.NegotiationExecution;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -35,10 +36,12 @@ public class Program {
         System.out.print("Informe uma quantia para sacar: ");
         double amount = sc.nextDouble();
 
-        try {
+        try { // tentar
             acc.withdraw(amount);
             System.out.printf("Novo saldo: %.2f%n", acc.getBalance());
-        } catch (NullPointerException e) {
+
+        }
+        catch (NegotiationExecution e) {
             System.out.println(e.getMessage());
         }
 

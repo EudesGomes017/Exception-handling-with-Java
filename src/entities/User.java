@@ -52,6 +52,7 @@ public class User {
         this.withdrawLimit = withdrawLimit;
     }
 
+
     public void deposit(double amount) {
         balance += amount;
     }
@@ -62,11 +63,22 @@ public class User {
     }
 
     private void validateWithdraw(double amount) {
+
+
         if (amount > getWithdrawLimit()) {
             throw new NegotiationExecution("Erro de saque: A quantia excede o limite de saque");
         }
+
         if (amount > getBalance()) {
             throw new NegotiationExecution("Erro de saque: Saldo insuficiente");
         }
+
+        //exeção com do proprio JAVA > RuntimeException
+      /*  if (amount > getWithdrawLimit()) {
+            throw new RuntimeException("Erro de saque: A quantia excede o limite de saque");
+        }*/
+       /* if (amount > getBalance()) {
+            throw new RuntimeException("Erro de saque: Saldo insuficiente");
+        }*/
     }
 }
